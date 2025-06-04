@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+import { ExemploService } from './services/exemplo.service';
 
 @Component({
   selector: 'app-root',
@@ -10,4 +11,20 @@ import { RouterOutlet } from '@angular/router';
 })
 export class AppComponent {
   title = 'front-angular';
+
+  constructor(
+    private exemploService: ExemploService
+  ){
+
+  }
+
+  testeFuncao(){
+    this.testeBackend()
+  }
+
+  testeBackend(){
+    this.exemploService.getExemplo().subscribe((res) => {
+      console.log('Resposta do backend:', res);
+    });
+  }
 }
